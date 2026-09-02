@@ -9,6 +9,9 @@ on:
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
+    env:
+      DATABASE_URL: file:./dev.db
+      NEXT_PUBLIC_APP_URL: http://localhost:3000
 
     steps:
     - uses: actions/checkout@v4
@@ -20,7 +23,7 @@ jobs:
         cache: 'npm'
 
     - name: Install dependencies
-      run: npm install
+      run: npm ci
 
     - name: Generate Prisma Client & Database
       run: |
