@@ -22,7 +22,6 @@ RUN npm run build
 # Production image
 FROM base AS runner
 ENV NODE_ENV=production
-ENV PORT=3000
 
 COPY --from=builder /app/.next ./.next
 COPY --from=builder /app/node_modules ./node_modules
